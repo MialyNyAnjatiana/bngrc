@@ -236,3 +236,13 @@ ALTER COLUMN is_default SET DEFAULT 1;
 
 ALTER TABLE vente
 ALTER COLUMN is_default SET DEFAULT 1;
+
+-- Mise à jour manuelle avec les valeurs exactes
+UPDATE dons SET prix_unitaire = 3000 WHERE description = 'Riz (kg)' AND prix_unitaire IS NULL;
+UPDATE dons SET prix_unitaire = 1000 WHERE description = 'Eau (L)' AND prix_unitaire IS NULL;
+UPDATE dons SET prix_unitaire = 25000 WHERE description = 'Tôle' AND prix_unitaire IS NULL;
+UPDATE dons SET prix_unitaire = 15000 WHERE description = 'Bâche' AND prix_unitaire IS NULL;
+UPDATE dons SET prix_unitaire = 4000 WHERE description = 'Haricots' AND prix_unitaire IS NULL;
+UPDATE dons SET prix_unitaire = 8000 WHERE description = 'Clous (kg)' AND prix_unitaire IS NULL;
+UPDATE dons SET prix_unitaire = 10000 WHERE description = 'Bois' AND prix_unitaire IS NULL;
+UPDATE dons SET prix_unitaire = 6000 WHERE description = 'Huile (L)' AND prix_unitaire IS NULL;
