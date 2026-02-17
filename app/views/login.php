@@ -1,0 +1,110 @@
+<?php
+$errors = $errors ?? [];
+$values = $values ?? [];
+
+function e($v){ return htmlspecialchars($v ?? '', ENT_QUOTES, 'UTF-8'); }
+function cls_invalid($errors, $field){
+    return !empty($errors[$field]) ? 'is-invalid' : '';
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Login</title>
+	<!-- plugins:css -->
+	<link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
+	<link rel="stylesheet" href="assets/vendors/ti-icons/css/themify-icons.css">
+	<link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+	<link rel="stylesheet" href="assets/vendors/font-awesome/css/font-awesome.min.css">
+	<!-- endinject -->
+	<!-- Plugin css for this page -->
+	<!-- End plugin css for this page -->
+	<!-- inject:css -->
+	<!-- endinject -->
+	<!-- Layout styles -->
+	<link rel="stylesheet" href="assets/css/style.css">
+	<!-- End layout styles -->
+	<link rel="shortcut icon" href="assets/images/favicon.png" />
+</head>
+
+<body>
+	<div class="container-scroller">
+		<div class="container-fluid page-body-wrapper full-page-wrapper">
+			<div class="content-wrapper d-flex align-items-center auth">
+				<div class="row flex-grow">
+					<div class="col-lg-4 mx-auto">
+						<div class="auth-form-light text-left p-5">
+							<div class="brand-logo">
+								<img src="assets/images/logo.svg">
+							</div>
+							<h4>Bienvenue!</h4>
+							<h6 class="font-weight-light">Connectez-vous pour continuer</h6>
+							<form class="pt-3" action="/login" method="post">
+								<!-- NOM -->
+								<div class="form-group">
+									<input type="text" class="form-control form-control-lg <?= cls_invalid($errors, 'nom') ?>" id="nom" name="nom" value="<?= e($values['nom'] ?? '') ?>"
+										placeholder="Nom">
+								</div>
+								<?php if (!empty($errors['nom'])): ?>
+									<div class="text-danger small mb-2">
+										<?= e($errors['nom']) ?>
+									</div>
+								<?php endif; ?>
+
+								<!-- EMAIL -->
+								<div class="form-group">
+									<input type="email" class="form-control form-control-lg <?= cls_invalid($errors, 'email') ?>" id="email" name="email" value=" <?= e($values['email'] ?? '') ?>"
+										placeholder="Email">
+								</div>
+								<?php if (!empty($errors['email'])): ?>
+									<div class="text-danger small mb-2">
+										<?= e($errors['email']) ?>
+									</div>
+								<?php endif; ?>
+
+								<!-- MOT DE PASSE -->
+								<div class="form-group">
+									<input type="password" class="form-control form-control-lg <?= cls_invalid($errors, 'mdp') ?>" id="mdp" name="mdp"
+										placeholder="Mot de passe">
+								</div>
+								<?php if (!empty($errors['mdp'])): ?>
+									<div class="text-danger small mb-3">
+										<?= e($errors['mdp']) ?>
+									</div>
+								<?php endif; ?>
+								<div class="mt-3 d-grid gap-2">
+									
+									<input type="submit" class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" value="SE CONNECTER">
+								</div>
+						</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- content-wrapper ends -->
+	</div>
+	<!-- page-body-wrapper ends -->
+	</div>
+	<!-- container-scroller -->
+
+	<!-- plugins:js -->
+	<script src="assets/vendors/js/vendor.bundle.base.js"></script>
+	<!-- endinject -->
+	<!-- Plugin js for this page -->
+	<!-- End plugin js for this page -->
+	<!-- inject:js -->
+	<script src="assets/js/off-canvas.js"></script>
+	<script src="assets/js/misc.js"></script>
+	<script src="assets/js/settings.js"></script>
+	<script src="assets/js/todolist.js"></script>
+	<script src="assets/js/jquery.cookie.js"></script>
+	<!-- endinject -->
+</body>
+
+</html>
